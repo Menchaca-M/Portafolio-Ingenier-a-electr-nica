@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Name Surname Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #1e2a33;
+      color: #e0e0e0;
+    }
+    body.light-theme {
+      background-color: #f5f5f5;
+      color: #111;
+    }
+    body.light-theme nav a {
+      color: #0077cc;
+    }
+    body.light-theme nav a:hover {
+      color: #005fa3;
+    }
+    body.light-theme section,
+    body.light-theme .project-card,
+    body.light-theme ul li {
+      background-color: rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: #111;
+    }
+    body.light-theme .project-card a,
+    body.light-theme a {
+      color: #0077cc;
+    }
+    header, section, footer {
+      position: relative;
+      width: 100%;
+      padding: 4rem 1rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .particles-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+    .particles-container canvas {
+      pointer-events: auto !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #a0c4ff;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a:hover {
+      color: #caf0f8;
+      transform: scale(1.1);
+    }
+    section {
+      border-radius: 0px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      margin: 2rem auto;
+      max-width: 95%;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    ul li {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.75rem 1.5rem;
+      border-radius: 20px;
+      font-weight: bold;
+      color: #e0e0e0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .project-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 600px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .project-card img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .project-card h3 {
+      margin-top: 0.5rem;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      color: #a0c4ff;
+      font-weight: bold;
+    }
+    #theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #ccc;
+      border: none;
+      border-radius: 5px;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+      z-index: 10;
+    }
+    #theme-toggle:hover {
+      background-color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle">Change Theme</button>
+
+  <header>
+    <div id="particles-header" class="particles-container"></div>
+    <div class="content">
+      <h1>Name Surname</h1>
+      <p>Software Engineer &amp; Programming Enthusiast</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="particles-container"></div>
+    <div class="content">
+      <h2>About Me</h2>
+      <p style="margin-left: 18%; margin-right: 18%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="particles-container"></div>
+    <div class="content">
+      <h2>Skills</h2>
+      <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="particles-container"></div>
+    <div class="content">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <h3>First project</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt.</p>
+        <a href="">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt.</p>
+        <a href="">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt.</p>
+        <a href="">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="particles-container"></div>
+    <div class="content">
+      <h2>Contact</h2>
+      <p>Email: <a href="" style="color:#a0c4ff;">example@example.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div id="particles-footer" class="particles-container"></div>
+    <div class="content">
+      <p>2025 - Created by Albino Cianciotti - <a style="color:#a0c4ff;" href="https://github.com/albino98/portfolio-website" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    function loadParticles(id, color, number) {
+      particlesJS(id, {
+        particles: {
+          number: { value: number },
+          color: { value: color },
+          size: { value: 3 },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: color,
+            opacity: 0.4,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 2
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
+          },
+          modes: {
+            repulse: { distance: 100, duration: 0.4 },
+            push: { particles_nb: 4 }
+          }
+        }
+      });
+    }
+
+    function reloadAllParticles() {
+      const isLight = document.body.classList.contains('light-theme');
+      const color = isLight ? '#000000' : '#ffffff';
+
+      const clearCanvas = (id) => {
+        const container = document.getElementById(id);
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
+      };
+
+      clearCanvas('particles-header');
+      clearCanvas('particles-footer');
+
+      loadParticles("particles-header", color, 200);
+      loadParticles("particles-footer", color, 50);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      reloadAllParticles();
+    });
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      reloadAllParticles();
+    });
+  </script>
+</body>
+</html>
