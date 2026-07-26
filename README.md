@@ -7,4 +7,4 @@ It’s perfect for both developers and non-developers who want to publish a clea
 
 ## 🎯 Key Benefits to Highlight
 
-[Portafolio](https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap)
+[Portafolio](https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js)
