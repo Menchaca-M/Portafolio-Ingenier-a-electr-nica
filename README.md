@@ -6,3 +6,5 @@ This responsive portfolio template (built with HTML, CSS, and particles.js) is d
 It’s perfect for both developers and non-developers who want to publish a clean, professional portfolio without dealing with frameworks or complex build setups.
 
 ## 🎯 Key Benefits to Highlight
+
+[Portafolio](https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap)
