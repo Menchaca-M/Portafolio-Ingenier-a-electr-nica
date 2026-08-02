@@ -1,266 +1,367 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mateo Menchaca Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Nunito', sans-serif;
-      scroll-behavior: smooth;
-      background-color: #1e2a33;
-      color: #e0e0e0;
-    }
-    body.light-theme {
-      background-color: #f5f5f5;
-      color: #111;
-    }
-    body.light-theme nav a {
-      color: #0077cc;
-    }
-    body.light-theme nav a:hover {
-      color: #005fa3;
-    }
-    body.light-theme section,
-    body.light-theme .project-card,
-    body.light-theme ul li {
-      background-color: rgba(0, 0, 0, 0.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      color: #111;
-    }
-    body.light-theme .project-card a,
-    body.light-theme a {
-      color: #0077cc;
-    }
-    header, section, footer {
-      position: relative;
-      width: 100%;
-      padding: 4rem 1rem;
-      text-align: center;
-      overflow: hidden;
-    }
-    .particles-container {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-    }
-    .particles-container canvas {
-      pointer-events: auto !important;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #a0c4ff;
-      font-weight: bold;
-      transition: color 0.3s, transform 0.3s;
-    }
-    nav a:hover {
-      color: #caf0f8;
-      transform: scale(1.1);
-    }
-    section {
-      border-radius: 0px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      margin: 2rem auto;
-      max-width: 95%;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    ul li {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 0.75rem 1.5rem;
-      border-radius: 20px;
-      font-weight: bold;
-      color: #e0e0e0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .project-card {
-      background-color: rgba(255, 255, 255, 0.05);
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 10px;
-      max-width: 600px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-    .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-    .project-card img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .project-card h3 {
-      margin-top: 0.5rem;
-    }
-    .project-card a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      text-decoration: none;
-      color: #a0c4ff;
-      font-weight: bold;
-    }
-    #theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      padding: 0.5rem 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      background-color: #ccc;
-      border: none;
-      border-radius: 5px;
-      color: #333;
-      transition: background-color 0.3s, color 0.3s;
-      z-index: 10;
-    }
-    #theme-toggle:hover {
-      background-color: #bbb;
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mateo Menchaca — Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg: #101a24;
+    --panel: #16222e;
+    --panel-border: #24384a;
+    --text: #e7edf2;
+    --text-muted: #90a3b3;
+    --accent: #d3a15a;      /* copper / resistor-gold */
+    --accent-soft: rgba(211,161,90,0.14);
+    --trace: #2f4557;       /* circuit trace lines */
+    --ok: #6fb3a0;          /* muted teal for links/status */
+    --radius: 6px;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+  }
+  a{ color:var(--ok); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+
+  .wrap{ max-width:880px; margin:0 auto; padding:0 1.5rem; }
+
+  /* ---------- circuit trace background (static, subtle) ---------- */
+  .traces{
+    position:absolute; inset:0; z-index:0; opacity:0.35; pointer-events:none;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--panel-border);
+    padding:4.5rem 0 3rem;
+  }
+  header .content{ position:relative; z-index:1; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:0.9rem;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(2.1rem, 4vw, 2.9rem);
+    letter-spacing:-0.01em;
+  }
+  .role{
+    margin-top:0.5rem;
+    font-size:1.05rem;
+    color:var(--text-muted);
+  }
+  .contact-row{
+    margin-top:1.6rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.4rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+  }
+  .contact-row a{ color:var(--text); border-bottom:1px dashed var(--trace); padding-bottom:2px; }
+  .contact-row a:hover{ color:var(--accent); border-color:var(--accent); text-decoration:none; }
+
+  /* ---------- section heading ---------- */
+  .section-heading{
+    display:flex;
+    align-items:baseline;
+    gap:0.75rem;
+    margin:3.2rem 0 1.6rem;
+  }
+  .section-heading h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.3rem;
+    font-weight:600;
+  }
+  .section-heading .rule{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, var(--trace), transparent);
+  }
+
+  /* ---------- project card (datasheet style) ---------- */
+  .project{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:var(--radius);
+    margin-bottom:1.4rem;
+    overflow:hidden;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .project:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+  }
+  .project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    padding:1.1rem 1.4rem;
+    border-bottom:1px solid var(--panel-border);
+    flex-wrap:wrap;
+  }
+  .project-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--text-muted);
+    letter-spacing:0.08em;
+  }
+  .project-top h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.12rem;
+    font-weight:600;
+    margin-top:0.15rem;
+  }
+  .grade{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--accent);
+    border:1px solid var(--accent-soft);
+    background:var(--accent-soft);
+    padding:0.3rem 0.65rem;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+  .grade.pending{
+    color:var(--text-muted);
+    border-color:var(--panel-border);
+    background:transparent;
+  }
+  .project-body{ padding:1.2rem 1.4rem 1.4rem; }
+  .project-body p{ color:var(--text); font-size:0.95rem; }
+  .field-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    margin:1rem 0 0.4rem;
+  }
+  .learnings{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:0.35rem;
+  }
+  .learnings li{
+    font-size:0.9rem;
+    color:var(--text);
+    padding-left:1.1rem;
+    position:relative;
+  }
+  .learnings li::before{
+    content:"›";
+    position:absolute;
+    left:0;
+    color:var(--ok);
+  }
+  .links-row{
+    display:flex;
+    gap:1rem;
+    margin-top:1.1rem;
+    flex-wrap:wrap;
+  }
+  .links-row a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    padding:0.4rem 0.8rem;
+    border:1px solid var(--trace);
+    border-radius:4px;
+    color:var(--text);
+  }
+  .links-row a:hover{
+    border-color:var(--ok);
+    color:var(--ok);
+    text-decoration:none;
+  }
+  .links-row span.disabled{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    padding:0.4rem 0.8rem;
+    border:1px dashed var(--panel-border);
+    border-radius:4px;
+    color:var(--text-muted);
+  }
+
+  /* ---------- todo marker for content the user needs to complete ---------- */
+  .todo{
+    color:#e0a35c;
+    font-style:italic;
+  }
+
+  footer{
+    margin-top:3rem;
+    padding:2.5rem 0;
+    border-top:1px solid var(--panel-border);
+    text-align:center;
+    color:var(--text-muted);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+  }
+
+  @media (max-width:520px){
+    header{ padding:3.2rem 0 2.2rem; }
+    .project-top{ align-items:flex-start; }
+  }
+</style>
 </head>
 <body>
-  <button id="theme-toggle">Change Theme</button>
 
-  <header>
-    <div id="particles-header" class="particles-container"></div>
-    <div class="content">
-      <h1>Portfolio de trabajos académicos</h1>
-      <p>Mateo Menchaca estudiante avanzado de Ingeniería Electrónica</p>
+<header>
+  <svg class="traces" viewBox="0 0 880 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#2f4557" stroke-width="1.5" fill="none">
+      <path d="M0 40 H260 L300 80 H620 L660 40 H880"/>
+      <path d="M0 120 H150 L190 160 H500 L540 200 H880"/>
+      <path d="M0 220 H400 L440 180 H880"/>
+    </g>
+    <g fill="#d3a15a">
+      <circle cx="260" cy="40" r="3"/>
+      <circle cx="620" cy="40" r="3"/>
+      <circle cx="190" cy="160" r="3"/>
+      <circle cx="440" cy="180" r="3"/>
+    </g>
+  </svg>
+  <div class="wrap content">
+    <div class="eyebrow">Portafolio académico</div>
+    <h1>Mateo Menchaca</h1>
+    <p class="role">Estudiante avanzado de Ingeniería Electrónica — 8.º semestre</p>
+    <div class="contact-row">
+      <a href="mailto:tu-correo@ejemplo.com">tu-correo@ejemplo.com</a>
+      <a href="#" target="_blank">linkedin.com/in/tu-usuario</a>
+      <a href="#" target="_blank">github.com/tu-usuario</a>
     </div>
-  </header>
-
-
-  <section id="projects">
-    <div class="particles-container"></div>
-    <div class="content">
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h3>Proyecto integrador 2</h3>
-        <p>Este proyecto propone el desarrollo de un sistema de autoservicio para el abastecimiento automatizado de combustible, integrando mecanismos de pago electrónico, control centralizado en la nube y protocolos de seguridad activa ante riesgos operacionales. El diseño de la solución está orientado a maximizar la eficiencia del proceso de carga, optimizar el uso de recursos físicos y humanos, y garantizar la continuidad segura de las operaciones. A través de una arquitectura IoT que conecta el hardware de campo con plataformas en la nube, el sistema mejora la experiencia del usuario y ofrece a las empresas un control auditable, automatizado y en tiempo real sobre el suministro y las ventas.</p>
-      <a href="Proyectos/Proyecto_Integrador_2.pdf" target="_blank">
-        Ver proyecto
-</a>
-
-      </div>
-      <div class="project-card">
-        <h3>Instrumentación y medidas</h3>
-        <p>Desarrollo de un sistema electrónico enfocado en la medición y corrección del factor de potencia en una red eléctrica de baja tensión utilizando un ESP32. El proyecto comprende la simulación analítica en LTspice y el diseño de circuitos de acondicionamiento de señal con amplificadores operacionales, optimizando la etapa de conversión analógico-digital (ADC) para garantizar lecturas óptimas. El núcleo del trabajo aplica técnicas de instrumentación destinadas a cuantificar los errores en las medidas y asegurar la precisión necesaria en el cálculo de los valores eficaces (RMS) de tensión, corriente y frecuencia. Finalmente, el sistema visualiza las variables en una interfaz HMI (FUXA) y ejecuta una compensación reactiva discreta mediante el acoplamiento controlado de condensadores.</p>
-        <a href="">
-           Ver proyecto
-        </a>
-      </div>
-      
-      <div class="project-card">
-        <h3>Diseño de sistemas de control</h3>
-        <p>Diseño e implementación en tiempo real de sistemas de control sobre una planta física de par motor-generador DC de diseño propio. El proyecto integra una fase teórica de modelado matricial y simulación en Xcos (observadores de estado y sistemas seguidores), consolidándose en la aplicación práctica de un controlador PID y un sistema seguidor configurados para cumplir con especificaciones estrictas de tiempo de asentamiento, velocidad de respuesta y error nulo. </p>
-        <a href="">
-           Ver proyecto
-        </a>
-      </div>
-    
-
-     <div class="project-card">
-    <h3>Microprocesadores</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt.</p>
-    <a href="">
-      Ver proyecto
-    </a>
   </div>
-</div>
+</header>
 
-    
-  </section>
+<main class="wrap">
 
+  <div class="section-heading">
+    <h2>Proyectos</h2>
+    <div class="rule"></div>
+  </div>
 
+  <!-- PRJ-01 -->
+  <div class="project">
+    <div class="project-top">
+      <div>
+        <div class="project-id">PRJ-01</div>
+        <h3>Proyecto Integrador 2 — Sistema de autoservicio de combustible</h3>
+      </div>
+      <span class="grade pending">Nota: <span class="todo">completar</span></span>
+    </div>
+    <div class="project-body">
+      <p>Sistema de autoservicio para abastecimiento automatizado de combustible, con pago electrónico, control centralizado en la nube y protocolos de seguridad activa. Arquitectura IoT que conecta hardware de campo con plataformas en la nube para dar control auditable y en tiempo real sobre el suministro y las ventas.</p>
 
+      <div class="field-label">Aprendizajes clave</div>
+      <ul class="learnings">
+        <li>Diseño de arquitecturas IoT con integración hardware-nube.</li>
+        <li>Implementación de flujos de pago electrónico y seguridad operacional.</li>
+        <li class="todo">completar con aprendizajes adicionales (protocolos usados, desafíos resueltos, etc.)</li>
+      </ul>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    function loadParticles(id, color, number) {
-      particlesJS(id, {
-        particles: {
-          number: { value: number },
-          color: { value: color },
-          size: { value: 3 },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: color,
-            opacity: 0.4,
-            width: 1
-          },
-          move: {
-            enable: true,
-            speed: 2
-          }
-        },
-        interactivity: {
-          detect_on: "canvas",
-          events: {
-            onhover: { enable: true, mode: "repulse" },
-            onclick: { enable: true, mode: "push" }
-          },
-          modes: {
-            repulse: { distance: 100, duration: 0.4 },
-            push: { particles_nb: 4 }
-          }
-        }
-      });
-    }
+      <div class="links-row">
+        <a href="Proyectos/Proyecto_Integrador_2.pdf" target="_blank">📄 Documentación</a>
+        <span class="disabled">💻 Código — completar</span>
+      </div>
+    </div>
+  </div>
 
-    function reloadAllParticles() {
-      const isLight = document.body.classList.contains('light-theme');
-      const color = isLight ? '#000000' : '#ffffff';
+  <!-- PRJ-02 -->
+  <div class="project">
+    <div class="project-top">
+      <div>
+        <div class="project-id">PRJ-02</div>
+        <h3>Instrumentación y Medidas — Corrección de factor de potencia</h3>
+      </div>
+      <span class="grade pending">Nota: <span class="todo">completar</span></span>
+    </div>
+    <div class="project-body">
+      <p>Sistema electrónico para medir y corregir el factor de potencia en una red de baja tensión con ESP32. Incluye simulación en LTspice, diseño de acondicionamiento de señal con amplificadores operacionales, optimización de la etapa ADC, cálculo de valores RMS de tensión, corriente y frecuencia, visualización en HMI (FUXA) y compensación reactiva discreta mediante acoplamiento controlado de condensadores.</p>
 
-      const clearCanvas = (id) => {
-        const container = document.getElementById(id);
-        while (container.firstChild) {
-          container.removeChild(container.firstChild);
-        }
-      };
+      <div class="field-label">Aprendizajes clave</div>
+      <ul class="learnings">
+        <li>Instrumentación electrónica: cuantificación de error y precisión en mediciones RMS.</li>
+        <li>Acondicionamiento de señal y optimización de conversión analógico-digital.</li>
+        <li class="todo">completar con aprendizajes adicionales</li>
+      </ul>
 
-      clearCanvas('particles-header');
-      clearCanvas('particles-footer');
+      <div class="links-row">
+        <span class="disabled">📄 Documentación — completar</span>
+        <span class="disabled">💻 Código — completar</span>
+      </div>
+    </div>
+  </div>
 
-      loadParticles("particles-header", color, 200);
-      loadParticles("particles-footer", color, 50);
-    }
+  <!-- PRJ-03 -->
+  <div class="project">
+    <div class="project-top">
+      <div>
+        <div class="project-id">PRJ-03</div>
+        <h3>Diseño de Sistemas de Control — Planta motor-generador DC</h3>
+      </div>
+      <span class="grade pending">Nota: <span class="todo">completar</span></span>
+    </div>
+    <div class="project-body">
+      <p>Diseño e implementación en tiempo real de sistemas de control sobre una planta física motor-generador DC de diseño propio. Modelado matricial y simulación en Xcos (observadores de estado y sistemas seguidores), aplicados en un controlador PID y un sistema seguidor con especificaciones estrictas de tiempo de asentamiento, velocidad de respuesta y error nulo.</p>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      reloadAllParticles();
-    });
+      <div class="field-label">Aprendizajes clave</div>
+      <ul class="learnings">
+        <li>Modelado matricial y diseño de observadores de estado.</li>
+        <li>Sintonización de controladores PID bajo especificaciones de desempeño estrictas.</li>
+        <li class="todo">completar con aprendizajes adicionales</li>
+      </ul>
 
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('light-theme');
-      reloadAllParticles();
-    });
-  </script>
+      <div class="links-row">
+        <span class="disabled">📄 Documentación — completar</span>
+        <span class="disabled">💻 Código — completar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRJ-04 -->
+  <div class="project">
+    <div class="project-top">
+      <div>
+        <div class="project-id">PRJ-04</div>
+        <h3><span class="todo">Microprocesadores — completar título del proyecto</span></h3>
+      </div>
+      <span class="grade pending">Nota: <span class="todo">completar</span></span>
+    </div>
+    <div class="project-body">
+      <p class="todo">Reemplazar por la descripción real del proyecto de Microprocesadores.</p>
+
+      <div class="field-label">Aprendizajes clave</div>
+      <ul class="learnings">
+        <li class="todo">completar</li>
+      </ul>
+
+      <div class="links-row">
+        <span class="disabled">📄 Documentación — completar</span>
+        <span class="disabled">💻 Código — completar</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Última actualización — <span class="todo">completar fecha</span>
+</footer>
+
 </body>
 </html>
