@@ -62,14 +62,14 @@ imprimir_bitmap:
 
 	la $s0, ($a0)          # puntero a bitmap
 	li $s1, 128           # ancho: columnas
-	li $a2, 64            # alto: 64 pÌxeles
+	li $a2, 64            # alto: 64 p√≠xeles
 	li $s3, 8
 	div $a2, $s3
-	mflo $s4              # s4 = cantidad de p·ginas (64/8 = 8)
-	li $s2, 0             # s2 = p·gina actual
+	mflo $s4              # s4 = cantidad de p√°ginas (64/8 = 8)
+	li $s2, 0             # s2 = p√°gina actual
 
 	loop_filas:
-	# Setear p·gina (0xB0 + n˙mero de p·gina)
+	# Setear p√°gina (0xB0 + n√∫mero de p√°gina)
 	li $a0, 0xB0   # fila 1
 	add $a0, $a0, $s2
 	li $a1, 0x00
@@ -91,7 +91,7 @@ imprimir_bitmap:
 	li $a3, 0x00
 	jal enviarSPI
 
-	# Imprimir 128 bytes (una lÌnea horizontal de una p·gina)
+	# Imprimir 128 bytes (una l√≠nea horizontal de una p√°gina)
 	li $s5, 128
 
 	loop_columnas:
