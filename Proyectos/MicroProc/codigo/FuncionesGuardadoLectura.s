@@ -1,6 +1,6 @@
 .data
     
-    .align 4                    # Alineación a 4 bytes (word)
+    .align 4                    # AlineaciÃ³n a 4 bytes (word)
     Inicio_Row: .space 516    # Row de 128 words = 512 bytes + 4 byte para terminador
     Puntero_Row: .space 4
     
